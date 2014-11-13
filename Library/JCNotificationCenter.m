@@ -51,6 +51,13 @@
   [[self sharedCenter] enqueueNotification:notification];
 }
 
++ (void) clearQueue {
+	
+	[[self sharedCenter] cleanEnqueueNotification];
+	
+	return ;
+}
+
 - (void) enqueueNotificationWithTitle:(NSString*)title
                               message:(NSString*)message
                            tapHandler:(JCNotificationBannerTapHandlingBlock)tapHandler {
@@ -77,6 +84,15 @@
     }
   }
   return notification;
+}
+
+- (void) cleanEnqueueNotification {
+	
+	
+	if ([enqueuedNotifications count] > 0) {
+		[enqueuedNotifications removeAllObjects];
+	}
+	return ;
 }
 
 - (void) beginPresentingNotifications {
