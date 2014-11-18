@@ -98,7 +98,7 @@ const CGFloat kJCNotificationBannerViewMarginY = 5.0;
     CGFloat currentY = borderY;
     
     float imageX=borderX-10;
-    float imageSize=30;
+    float imageSize=45;
     
     
     CGFloat contentWidth = self.frame.size.width - (borderX * 2.0);
@@ -107,7 +107,9 @@ const CGFloat kJCNotificationBannerViewMarginY = 5.0;
         NSLog(@"imageIcon:%@",notificationBanner.image);
         
         [iconImageView setImage: notificationBanner.image];
-        iconImageView.frame=CGRectMake(imageX, borderY+7, imageSize, imageSize);
+        iconImageView.frame=CGRectMake(imageX, borderY, imageSize, imageSize);
+        iconImageView.layer.cornerRadius = imageSize/2;
+        iconImageView.layer.masksToBounds = true;
         currentX+=imageX-10 + imageSize;
     }
     currentY += 2.0;
